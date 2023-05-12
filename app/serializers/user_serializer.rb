@@ -1,3 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :name, :location
+  attributes :id, :name, :location
+  has_many :cats, serializer: UserCatSerializer
 end
