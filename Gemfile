@@ -29,3 +29,5 @@ group :development do
 end
 
 gem "bcrypt"
+
+gem "active_model_serializers"
