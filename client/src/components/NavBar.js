@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
-
-  const [user, setUser] = useState(false);
+const NavBar = ({user}) => {
 
   return (
     <nav id="navbar">

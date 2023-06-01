@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {Routes, Route} from "react-router-dom";
 import Cats from './components/Cats';
 import HomePage from './components/HomePage';
@@ -10,11 +10,20 @@ import UserProfile from './components/UserProfile';
 import NoPage from './components/NoPage';
 
 function App() {
+  useEffect(() => {
+    fetch("/auth")
+    .then(r => {
+      if (r.ok) {
+        r.json().then(setUser)
+      } // Add error handling
+    })
+  }, [])
+
   const [user, setUser] = useState()
   
   return (
     <>
-      <NavBar />
+      <NavBar user={user} />
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="signup" element={<Signup />} />

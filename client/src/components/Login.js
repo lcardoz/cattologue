@@ -28,7 +28,7 @@ const Login = ({setUser}) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(login)
     })
-    .then(r => r.json())
+    .then(r => r.json()) // Add error handling
     .then(setUser)
     .then(navigate("/"))
   }
