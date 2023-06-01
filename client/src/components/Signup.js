@@ -38,7 +38,7 @@ const Signup = () => {
           onChange={handleInput}
         />
         <input
-          type='text'
+          type='password'
           value={formData.password}
           name='password'
           onChange={handleInput}

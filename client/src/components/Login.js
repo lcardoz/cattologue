@@ -1,10 +1,36 @@
 import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setUser}) => {
+  const navigate = useNavigate()
+
+  const [login, setLogin] = useState({
+    username: '',
+    password: ''
+  })
+
+  const handleInput = (e) => {
+    setLogin({
+      ...login,
+      [e.target.name]: e.target.value
+    })
+  }
 
   const handleFormSubmit = (e) => { 
     e.preventDefault();
+    handleLogin(login)
+  }
 
+  const handleLogin = (login) => {
+    fetch("/login", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(login)
+    })
+    .then(r => r.json())
+    .then(setUser)
+    .then(navigate("/"))
   }
 
   return (
@@ -16,17 +42,17 @@ const Login = () => {
             <input 
               type="text" 
               name="username"
-              // value={Obj.username}
-              // onChange={handleChange}
+              value={login.username} 
+              onChange={handleInput}
             />
           </label>
           <br /> 
           <label> Password: 
             <input 
-              type="text" 
+              type="password" 
               name="password"
-              // value={Obj.password}
-              // onChange={handleChange}
+              value={login.password}
+              onChange={handleInput}
             />
           </label>
           <br /> 
