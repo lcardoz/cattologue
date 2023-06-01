@@ -7,7 +7,9 @@ const NavBar = () => {
 
   return (
     <nav id="navbar">
-      <h1 id="nav-title">CATTOLOGUE</h1>
+      <Link to="/">
+        <h1 id="nav-title">CATTOLOGUE</h1>
+      </Link>
       {user ?
       <> 
         <h4 id="nav-links">
