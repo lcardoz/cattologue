@@ -10,6 +10,12 @@ import UserProfile from './components/UserProfile';
 import NoPage from './components/NoPage';
 
 function App() {
+
+  // need to do: fetch and render info on cats page and profile page
+
+  // Martin: cats page
+  // Leah: user profile
+
   useEffect(() => {
     fetch("/auth")
     .then(r => {
