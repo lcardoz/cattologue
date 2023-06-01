@@ -12,7 +12,7 @@ const NavBar = () => {
       <> 
         <h4 id="nav-links">
           <Link to="/cats">CATS</Link>
-          <Link to="/user-profile">PROFILE</Link>
+          <Link to="/user-profile">MY PROFILE</Link>
         </h4>
       </> 
       : 

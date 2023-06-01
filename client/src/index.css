@@ -30,7 +30,7 @@ code {
 }
 
 #login-container {
-  display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
   margin: 5% 25% 5% 25%;
@@ -39,11 +39,26 @@ code {
   width: 50%;
   background-color: #f9efa0;
   color: #15110b;
+  border-radius: 3px;
 }
 
 #login-form {
-  width: 30em;
-  max-width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
+  font-weight: 600;
+}
 
+#profile-container {
+  text-align: center; 
+  justify-content: center;
+  align-items: center;
+  margin-left: 25%;
+  padding-bottom: 25px;
+  border: 2px solid #15110b;
+  width: 50%;
+  background-color: #f9efa0;
+  color: #15110b;
+  border-radius: 3px;
 }
