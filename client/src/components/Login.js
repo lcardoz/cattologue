@@ -28,9 +28,15 @@ const Login = ({setUser}) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(login)
     })
-    .then(r => r.json()) // Add error handling
-    .then(setUser)
-    .then(navigate("/"))
+    .then(r => {
+      if (r.ok) {
+        r.json()
+        .then(setUser)
+        .then(navigate("/"))
+      } else {
+        console.error('OINK') // Add error rendering
+      }
+    })
   }
 
   return (

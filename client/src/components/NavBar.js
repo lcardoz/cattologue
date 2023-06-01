@@ -1,7 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const NavBar = ({user}) => {
+const NavBar = ({user, setUser}) => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    fetch("/logout", {method: "DELETE"})
+    .then(r => {
+      if (r.ok) {
+        setUser(null)
+        navigate("/")
+      }
+    })
+  }
 
   return (
     <nav id="navbar">
@@ -13,6 +24,7 @@ const NavBar = ({user}) => {
         <h4 id="nav-links">
           <Link to="/cats">CATS</Link>
           <Link to="/user-profile">MY PROFILE</Link>
+          <button onClick={handleLogout}>Log out</button>
         </h4>
       </> 
       : 

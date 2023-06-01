@@ -23,7 +23,7 @@ function App() {
   
   return (
     <>
-      <NavBar user={user} />
+      <NavBar user={user} setUser={setUser} />
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="signup" element={<Signup />} />
