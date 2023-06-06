@@ -1,12 +1,11 @@
 const CatCard = ({cat}) => {
     return (
-        <div>
-            <p>This is a cat card</p>
-            {/* <img src={cat.image} />
+        <div className="catcard">
+            <img src={cat.image} />
             <h2>{cat.name}</h2>
             <p>{cat.age + ' | ' + cat.sex}</p>
-            <p>{cat.disposition}</p>
-            {cat.user ? <p>{cat.user.name}</p> : null} */}
+            <p>Disposition: {cat.disposition}</p>
+            {cat.user ? <p>Human: {cat.user.name}</p> : null}
         </div>
     )
 }

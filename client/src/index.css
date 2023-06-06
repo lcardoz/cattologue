@@ -50,11 +50,13 @@ code {
   font-weight: 600;
 }
 
-#profile-container {
+#profile-container,
+.catcard {
   text-align: center; 
   justify-content: center;
   align-items: center;
   margin-left: 25%;
+  margin-bottom: 25px;
   padding-bottom: 25px;
   border: 2px solid #15110b;
   width: 50%;

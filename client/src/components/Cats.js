@@ -6,17 +6,17 @@ const Cats = () => {
   const [cats, setCats] = useState()
 
   useEffect(() => {
-    // fetch cats
-    console.log('OINK')
+    fetch('/cats')
+    .then(r => r.json())
+    .then(setCats)
   }, [])
 
-  // const renderedCats = cats.map(cat => <CatCard cat={cat} />)
+  const renderedCats = cats?.map(cat => <CatCard key={cat.id} cat={cat} />)
 
   return (
     <div>
       <h1>Cats</h1>
-      {/* {renderedCats} */}
-      <CatCard />
+      {renderedCats}
     </div>
   )
 }
