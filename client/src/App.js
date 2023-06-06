@@ -35,7 +35,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="login" element={<Login setUser={setUser}/>} />
         <Route path="cats" element={<Cats />} />
-        <Route path="user-profile" element={<UserProfile />} />
+        <Route path="user-profile" element={<UserProfile user={user} />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </>
