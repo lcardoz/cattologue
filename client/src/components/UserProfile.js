@@ -1,15 +1,32 @@
 import React from 'react';
+// import CatCard from './CatCard';
 
-const UserProfile = () => {
+const UserProfile = ({user}) => {
+
+  console.log('user', user)
 
   return (
     <div id="profile-container">
       <div id="profile-child">
-        <h2>Name:</h2>
-        <img href="" alt="user"/>
-        <h3>Location:</h3>
-        <h3>Cats:</h3>
-        <button>Follow User</button>
+        <h2>Name:{user.name}</h2>
+        {/* <img href={user.image} alt="user"/> */}
+        <h3>Location:{user.location}</h3>
+        <div>  
+          <h3>Cats:
+            {user.cats.map(cat => (
+            // Can we import CatCard here? 
+              <div>
+                <h4>{cat.name}</h4>
+                <img href={cat.image} alt={cat.name}/>
+                <p>Age:{cat.age}</p>
+                <p>Sex:{cat.sex}</p>
+                <p>Color:{cat.color}</p>
+                <p>Disposition:{cat.disposition}</p>
+              </div>
+            ))}
+          </h3>
+        </div>
+        {/* <button>Follow User</button> */}
       </div>
     </div>
   )
