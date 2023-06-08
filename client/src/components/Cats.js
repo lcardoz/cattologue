@@ -13,9 +13,15 @@ const Cats = () => {
 
   const renderedCats = cats?.map(cat => <CatCard key={cat.id} cat={cat} />)
 
+  const handleClick = () => {
+    console.log('button clicked')
+
+  }
+
   return (
-    <div>
+    <div style={{textAlign: "center"}}>
       <h1>Cats</h1>
+      <button onClick={handleClick} style={{marginBottom: "20px"}}>Add Cat</button>
       {renderedCats}
     </div>
   )

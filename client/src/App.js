@@ -8,13 +8,17 @@ import NavBar from './components/NavBar';
 import Signup from './components/Signup';
 import UserProfile from './components/UserProfile';
 import NoPage from './components/NoPage';
+import CatForm from './components/CatForm';
 
 function App() {
 
-  // need to do: fetch and render info on cats page and profile page
+  // HOMEWORK: 
+    // Martin- create formData object, rearrange form fields / add labels on his own branch :)
+    // Leah- implement Cat filter/search on their own branch :)
 
-  // Martin: cats page
-  // Leah: user profile
+  // TO DO: CRUD, filter on cats, ReactNative for site responsiveness?
+
+  // Stretch Goals: Action Mailer, Active Storage, Styling Framework? (Tailwind, Bootstrap?)
 
   useEffect(() => {
     fetch("/auth")
@@ -36,6 +40,7 @@ function App() {
         <Route path="login" element={<Login setUser={setUser}/>} />
         <Route path="cats" element={<Cats />} />
         <Route path="user-profile" element={<UserProfile user={user} />} />
+        <Route path="new-cat" element={<CatForm />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </>
