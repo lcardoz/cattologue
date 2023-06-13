@@ -64,3 +64,9 @@ code {
   color: #15110b;
   border-radius: 3px;
 }
+
+.catform {
+  display: flex;
+  width: auto;
+  justify-content: center;
+}
