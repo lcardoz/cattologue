@@ -2,8 +2,12 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import CatCard from './CatCard';
 
-const Cats = () => {
-  const [cats, setCats] = useState()
+const Cats = ( {user} ) => {
+  const [cats, setCats] = useState([])
+  const [showOnlyMyCats, setShowOnlyMyCats] = useState(false)
+
+  // console.log(cats)
+  // console.log(user)
 
   useEffect(() => {
     fetch('/cats')
@@ -11,18 +15,28 @@ const Cats = () => {
     .then(setCats)
   }, [])
 
-  const renderedCats = cats?.map(cat => <CatCard key={cat.id} cat={cat} />)
-
   const handleClick = () => {
     console.log('button clicked')
-
   }
 
   return (
     <div style={{textAlign: "center"}}>
       <h1>Cats</h1>
       <button onClick={handleClick} style={{marginBottom: "20px"}}>Add Cat</button>
-      {renderedCats}
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={showOnlyMyCats}
+            onChange={() => setShowOnlyMyCats(!showOnlyMyCats)}
+          />
+          Show only my cats
+        </label>
+        {cats
+          .filter(cat => (!showOnlyMyCats || cat.user.id === user.id))
+          .map(cat => <CatCard key={cat.id} cat={cat} />)
+        }
+      </div>
     </div>
   )
 }
