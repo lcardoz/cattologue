@@ -43,13 +43,9 @@ const Cats = ( {user} ) => {
           </input>
         </div>
         {cats
-          .filter(cat => (!showOnlyMyCats || cat.user.id === user.id))
-          .filter(cat => {
-            if (search==="") {
-              return false
-            }
-              return cat.name.toLowerCase().includes(search.toLowerCase())
-          })
+          .filter(cat => (!showOnlyMyCats || cat.user.id === user.id) &&
+            cat.name.toLowerCase().includes(search.toLowerCase())
+          )
           .map(cat => <CatCard key={cat.id} cat={cat} />)
         }
       </div>
