@@ -13,11 +13,10 @@ import CatForm from './components/CatForm';
 function App() {
 
   // HOMEWORK: 
-    // Martin- create formData object, rearrange form fields / add labels on his own branch :)
-    // Leah- implement Cat filter/search on their own branch :)
+    // Martin- attempt to create new cat
+    // Leah- attempt to create new user
 
-  // TO DO: CRUD, filter on cats, ReactNative for site responsiveness?
-
+  // TO DO: CRUD, look into ReactNative?
   // Stretch Goals: Action Mailer, Active Storage, Styling Framework? (Tailwind, Bootstrap?)
 
   useEffect(() => {
