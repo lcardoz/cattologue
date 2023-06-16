@@ -19,21 +19,19 @@ const NavBar = ({user, setUser}) => {
       <Link to="/">
         <h1 id="nav-title">CATTOLOGUE</h1>
       </Link>
+      <h4 id="nav-links">
+      <Link to="/cats">CATS</Link>
       {user ?
-      <> 
-        <h4 id="nav-links">
-          <Link to="/cats">CATS</Link>
+        <> 
           <Link to="/user-profile">MY PROFILE</Link>
           <button onClick={handleLogout}>Log out</button>
-        </h4>
-      </> 
+        </> 
       : 
-      <>
-        <h4 id="nav-links">
+        <>
           <Link to="/login">LOGIN</Link>
           <Link to="/signup">SIGNUP</Link>
-        </h4>
-      </>}
+        </>}
+      </h4>
     </nav>
   )
 }
