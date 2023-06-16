@@ -1,3 +1,3 @@
 class CatUserSerializer < ActiveModel::Serializer
-  attributes :name, :location
+  attributes :name, :location, :id
 end
