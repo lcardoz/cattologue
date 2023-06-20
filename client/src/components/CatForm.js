@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const CatForm = () => {
+  const navigate = useNavigate()
 
   const initialState = {
     name: '',
-    age: '', // Will have to convert this to int on backend
+    age: '', // Will have to convert this to int on backend?
     sex: '',
     disposition: '',
     image: ''
@@ -21,8 +23,19 @@ const CatForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('submitted form', formData)
-    setFormData(initialState)
+    fetch('/cats', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(r => {
+      if (r.ok) {
+          setFormData(initialState)
+          navigate('/cats')
+      } else {
+        console.error('OINK')
+      }
+    })
   }
 
   return (
