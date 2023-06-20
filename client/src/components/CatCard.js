@@ -3,7 +3,7 @@ const CatCard = ({cat}) => {
         <div className="catcard">
             <img src={cat.image} />
             <h2>{cat.name}</h2>
-            <p>{cat.age + ' | ' + cat.sex}</p>
+            <p>{cat.age + ' | ' + cat.sex + ' | ' + cat.color}</p>
             <p>Disposition: {cat.disposition}</p>
             {cat.user ? <p>Human: {cat.user.name}</p> : null}
         </div>
