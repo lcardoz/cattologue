@@ -8,6 +8,7 @@ const CatForm = () => {
     name: '',
     age: '', // Will have to convert this to int on backend?
     sex: '',
+    color: '',
     disposition: '',
     image: ''
   }
@@ -65,6 +66,14 @@ const CatForm = () => {
             <option value="female">Female</option>
             <option value="male">Male</option>
           </select>
+          <label>Color: </label>
+          <input
+            type="text"
+            name="color"
+            value={formData.color}
+            onChange={handleInput}
+            placeholder="Enter color or breed..."
+          />
           <label>Disposition: </label>
           <input
             type="text"
@@ -72,7 +81,7 @@ const CatForm = () => {
             value={formData.disposition}
             onChange={handleInput}
             placeholder="Describe disposition..."
-            />
+          />
           <label>Image: </label>
           <input
             type="text"
