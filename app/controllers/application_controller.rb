@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
     include ActionController::Cookies
 
+    wrap_parameters format: []
+
     # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
 

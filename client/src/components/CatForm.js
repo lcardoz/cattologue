@@ -34,7 +34,7 @@ const CatForm = () => {
           setFormData(initialState)
           navigate('/cats')
       } else {
-        console.error('OINK')
+        r.json().then(console.error)
       }
     })
   }

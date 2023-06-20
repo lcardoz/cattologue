@@ -19,17 +19,19 @@ const Cats = ( {user} ) => {
   return (
     <div style={{textAlign: "center"}}>
       <h1>Cats</h1>
-      <button onClick={() => navigate('/new-cat')} style={{marginBottom: "20px"}}>Add Cat</button>
       <div>
         {user ?
-          <label >
-            <input
-              type="checkbox"
-              checked={showOnlyMyCats}
-              onChange={() => setShowOnlyMyCats(!showOnlyMyCats)}
-            />
-            Only show my cats
-          </label>
+          <>
+            <button onClick={() => navigate('/new-cat')} style={{marginBottom: "20px"}}>Add Cat</button>
+            <label >
+              <input
+                type="checkbox"
+                checked={showOnlyMyCats}
+                onChange={() => setShowOnlyMyCats(!showOnlyMyCats)}
+                />
+              Only show my cats
+            </label>
+          </>
         : null}
         <div style={{marginTop: "20px", marginBottom: "20px"}}>
           <input 
