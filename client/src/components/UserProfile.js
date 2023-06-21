@@ -3,16 +3,16 @@ import React from 'react';
 
 const UserProfile = ({user}) => {
 
-  console.log('user', user)
+  // console.log('user', user)
 
   return (
     <div id="profile-container">
       <div id="profile-child">
-        <h2>Name:{user.name}</h2>
+        <h2>Name: {user.name}</h2>
         {/* <img href={user.image} alt="user"/> */}
-        <h3>Location:{user.location}</h3>
+        <h3>Location: {user.location}</h3>
         <div>  
-          <h3>Cats:
+          <h3>Cats: 
             {user.cats.map(cat => (
             // Can we import CatCard here? 
               <div>
