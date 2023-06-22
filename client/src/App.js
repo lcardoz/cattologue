@@ -35,8 +35,8 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="login" element={<Login setUser={setUser}/>} />
+        <Route path="signup" element={<Signup setUser={setUser} />} />
+        <Route path="login" element={<Login setUser={setUser} />} />
         <Route path="cats" element={<Cats user={user} />} />
         <Route path="user-profile" element={<UserProfile user={user} />} />
         <Route path="new-cat" element={<CatForm />} />

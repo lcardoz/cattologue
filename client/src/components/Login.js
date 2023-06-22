@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({setUser}) => {
-  const navigate = useNavigate()
+
+  const navigate = useNavigate();
 
   const [login, setLogin] = useState({
     username: '',
@@ -34,7 +35,7 @@ const Login = ({setUser}) => {
         .then(setUser)
         .then(navigate("/"))
       } else {
-        console.error('OINK') // Add error rendering
+        console.error('error! - error handling') // Add error rendering
       }
     })
   }
