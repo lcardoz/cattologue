@@ -13,10 +13,10 @@ import CatForm from './components/CatForm';
 function App() {
 
   // HOMEWORK: 
-    // Martin- attempt to create new cat
-    // Leah- attempt to create new user
+    // Martin- UD for cat model, fix rendering of user cats on profile after new cat has been added
+    // Leah- UD for user model
 
-  // TO DO: CRUD, look into ReactNative?
+  // TO DO: look into ReactNative?
   // Stretch Goals: Action Mailer, Active Storage, Styling Framework? (Tailwind, Bootstrap?)
 
   useEffect(() => {
