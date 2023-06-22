@@ -6,7 +6,7 @@ const CatForm = () => {
 
   const initialState = {
     name: '',
-    age: '', // Will have to convert this to int on backend?
+    age: '',
     sex: '',
     color: '',
     disposition: '',
