@@ -1,14 +1,14 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import CatCard from './CatCard';
 
 const Cats = ( {user} ) => {
+  const navigate = useNavigate()
+
   const [cats, setCats] = useState([])
   const [showOnlyMyCats, setShowOnlyMyCats] = useState(false)
   const [search, setSearch] =useState('')
-
-  // console.log(cats)
-  // console.log(user)
 
   useEffect(() => {
     fetch('/cats')
@@ -16,24 +16,22 @@ const Cats = ( {user} ) => {
     .then(setCats)
   }, [])
 
-  const handleClick = () => {
-    console.log('button clicked')
-  }
-
   return (
     <div style={{textAlign: "center"}}>
       <h1>Cats</h1>
-      <button onClick={handleClick} style={{marginBottom: "20px"}}>Add Cat</button>
       <div>
         {user ?
-          <label >
-            <input
-              type="checkbox"
-              checked={showOnlyMyCats}
-              onChange={() => setShowOnlyMyCats(!showOnlyMyCats)}
-            />
-            Only show my cats
-          </label>
+          <>
+            <button onClick={() => navigate('/new-cat')} style={{marginBottom: "20px"}}>Add Cat</button>
+            <label >
+              <input
+                type="checkbox"
+                checked={showOnlyMyCats}
+                onChange={() => setShowOnlyMyCats(!showOnlyMyCats)}
+                />
+              Only show my cats
+            </label>
+          </>
         : null}
         <div style={{marginTop: "20px", marginBottom: "20px"}}>
           <input 

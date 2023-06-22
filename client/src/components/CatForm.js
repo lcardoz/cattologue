@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const CatForm = () => {
+  const navigate = useNavigate()
 
   const initialState = {
     name: '',
-    age: '', // Will have to convert this to int on backend
+    age: '',
     sex: '',
+    color: '',
     disposition: '',
     image: ''
   }
@@ -21,8 +24,19 @@ const CatForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('submitted form', formData)
-    setFormData(initialState)
+    fetch('/cats', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(r => {
+      if (r.ok) {
+          setFormData(initialState)
+          navigate('/cats')
+      } else {
+        r.json().then(console.error)
+      }
+    })
   }
 
   return (
@@ -52,6 +66,14 @@ const CatForm = () => {
             <option value="female">Female</option>
             <option value="male">Male</option>
           </select>
+          <label>Color: </label>
+          <input
+            type="text"
+            name="color"
+            value={formData.color}
+            onChange={handleInput}
+            placeholder="Enter color or breed..."
+          />
           <label>Disposition: </label>
           <input
             type="text"
@@ -59,7 +81,7 @@ const CatForm = () => {
             value={formData.disposition}
             onChange={handleInput}
             placeholder="Describe disposition..."
-            />
+          />
           <label>Image: </label>
           <input
             type="text"
