@@ -13,8 +13,8 @@ import CatForm from './components/CatForm';
 function App() {
 
   // HOMEWORK: 
-    // Martin- attempt to create new cat
-    // Leah- attempt to create new user
+    // Martin- 
+    // Leah- 
 
   // TO DO: CRUD, look into ReactNative?
   // Stretch Goals: Action Mailer, Active Storage, Styling Framework? (Tailwind, Bootstrap?)
@@ -34,7 +34,7 @@ function App() {
     checkUser()
   }, [])
 
-  const [user, setUser] = useState()
+  const [user, setUser] = useState({})
   
   return (
     <>

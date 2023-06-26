@@ -4,16 +4,14 @@ import {useNavigate} from 'react-router-dom';
 const CatForm = ({checkUser}) => {
   const navigate = useNavigate()
 
-  const initialState = {
+  const [formData, setFormData] = useState({
     name: '',
     age: '',
     sex: '',
     color: '',
     disposition: '',
     image: ''
-  }
-
-  const [formData, setFormData] = useState(initialState);
+  });
 
   const handleInput = (e) => {
     setFormData({
@@ -31,7 +29,6 @@ const CatForm = ({checkUser}) => {
     })
     .then(r => {
       if (r.ok) {
-          setFormData(initialState)
           checkUser()
           navigate('/cats')
       } else {
