@@ -12,7 +12,7 @@ const UserProfile = ({user}) => {
         <h3>Location: {user.location}</h3>
         <div>  
           <h3>Cats:</h3>
-          {user.cats.map(cat => <CatCard cat={cat} />)}
+          {user.cats.map(cat => <CatCard key={cat.name} cat={cat} />)}
         </div>
         {/* <button>Follow User</button> */}
       </div>

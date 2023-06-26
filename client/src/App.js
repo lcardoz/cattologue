@@ -24,7 +24,9 @@ function App() {
     .then(r => {
       if (r.ok) {
         r.json().then(setUser)
-      } // Add error handling
+      } else {
+        r.json().then(console.error)
+      }
     })
   }, [])
 
