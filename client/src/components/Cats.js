@@ -8,7 +8,7 @@ const Cats = ( {user} ) => {
 
   const [cats, setCats] = useState([])
   const [showOnlyMyCats, setShowOnlyMyCats] = useState(false)
-  const [search, setSearch] =useState('')
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     fetch('/cats')

@@ -19,7 +19,7 @@ function App() {
   // TO DO: CRUD, look into ReactNative?
   // Stretch Goals: Action Mailer, Active Storage, Styling Framework? (Tailwind, Bootstrap?)
 
-  useEffect(() => {
+  const checkUser = () => {
     fetch("/auth")
     .then(r => {
       if (r.ok) {
@@ -28,6 +28,10 @@ function App() {
         r.json().then(console.error)
       }
     })
+  }
+
+  useEffect(() => {
+    checkUser()
   }, [])
 
   const [user, setUser] = useState()
@@ -41,7 +45,7 @@ function App() {
         <Route path="login" element={<Login setUser={setUser} />} />
         <Route path="cats" element={<Cats user={user} />} />
         <Route path="user-profile" element={<UserProfile user={user} />} />
-        <Route path="new-cat" element={<CatForm />} />
+        <Route path="new-cat" element={<CatForm checkUser={checkUser} />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </>

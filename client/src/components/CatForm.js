@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
-const CatForm = () => {
+const CatForm = ({checkUser}) => {
   const navigate = useNavigate()
 
   const initialState = {
@@ -32,6 +32,7 @@ const CatForm = () => {
     .then(r => {
       if (r.ok) {
           setFormData(initialState)
+          checkUser()
           navigate('/cats')
       } else {
         r.json().then(console.error)
