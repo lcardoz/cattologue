@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Cats from './components/Cats';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
@@ -9,6 +9,7 @@ import Signup from './components/Signup';
 import UserProfile from './components/UserProfile';
 import NoPage from './components/NoPage';
 import CatForm from './components/CatForm';
+import UserForm from './components/UserForm';
 
 function App() {
 
@@ -38,7 +39,8 @@ function App() {
         <Route path="signup" element={<Signup setUser={setUser} />} />
         <Route path="login" element={<Login setUser={setUser} />} />
         <Route path="cats" element={<Cats user={user} />} />
-        <Route path="user-profile" element={<UserProfile user={user} />} />
+        <Route path="user-profile/:id" element={<UserProfile user={user} />} />
+        <Route path="user-profile/:id/edit-profile" element={<UserForm user={user} /> } />
         <Route path="new-cat" element={<CatForm />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
