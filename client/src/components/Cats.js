@@ -46,7 +46,7 @@ const Cats = ( {user} ) => {
           .filter(cat => (!showOnlyMyCats || cat.user.id === user.id) &&
             cat.name.toLowerCase().includes(search.toLowerCase())
           )
-          .map(cat => <CatCard key={cat.id} cat={cat} />)
+          .map(cat => <CatCard key={cat.id} cat={cat} user={user} />)
         }
       </div>
     </div>

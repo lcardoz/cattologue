@@ -16,6 +16,15 @@ class CatsController < ApplicationController
         render json: new_cat, status: :created
     end
 
+    # def update
+
+    # end
+
+    def destroy
+        Cat.find(params[:id]).destroy
+        head :no_content
+    end
+
     # private
     # def cat_params
     #     params.permit(:name, :age, :sex, :color, :disposition, :image)

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
-const CatForm = ({checkUser}) => {
+const CatForm = ({user, checkUser}) => {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({

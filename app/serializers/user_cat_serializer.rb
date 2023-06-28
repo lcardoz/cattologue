@@ -1,3 +1,3 @@
 class UserCatSerializer < ActiveModel::Serializer
-  attributes :name, :age, :sex, :color, :disposition
+  attributes :id, :name, :age, :sex, :color, :disposition
 end
