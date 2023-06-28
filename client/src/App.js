@@ -53,6 +53,23 @@ function App() {
       }
     })
   }
+
+  const patchCat = (e, formData) => {
+    e.preventDefault()
+    fetch('/cats', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(r => {
+      if (r.ok) {
+          checkUser()
+          navigate('/cats')
+      } else {
+        r.json().then(console.error)
+      }
+    })
+  }
   
   return (
     <>
@@ -63,8 +80,8 @@ function App() {
         <Route path="login" element={<Login setUser={setUser} />} />
         <Route path="cats" element={<Cats user={user} />} />
         <Route path="user-profile" element={<UserProfile user={user} />} />
-        <Route path="new-cat" element={<CatForm user={user} checkUser={checkUser} handleSubmit={postCat} />} />
-        <Route path="edit-cat" element={<CatForm user={user} checkUser={checkUser} />} />
+        <Route path="new-cat" element={<CatForm handleSubmit={postCat} />} />
+        <Route path="edit-cat" element={<CatForm handleSubmit={patchCat} />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </>

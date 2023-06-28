@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 
-const CatForm = ({user, checkUser, handleSubmit}) => {
-  const navigate = useNavigate()
+const CatForm = ({handleSubmit}) => {
   const location = useLocation()
 
   const [formData, setFormData] = useState({
