@@ -1,6 +1,6 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-import {Routes, Route} from "react-router-dom";
+import {useState, useEffect} from 'react';
+import {Routes, Route, useNavigate} from "react-router-dom";
 import Cats from './components/Cats';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
@@ -18,6 +18,8 @@ function App() {
 
   // TO DO: CRUD, look into ReactNative?
   // Stretch Goals: Action Mailer, Active Storage, Styling Framework? (Tailwind, Bootstrap?)
+  const navigate = useNavigate()
+
   const [user, setUser] = useState()
 
   const checkUser = () => {
@@ -34,6 +36,23 @@ function App() {
   useEffect(() => {
     checkUser()
   }, [])
+
+  const postCat = (e, formData) => {
+    e.preventDefault()
+    fetch('/cats', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(r => {
+      if (r.ok) {
+          checkUser()
+          navigate('/cats')
+      } else {
+        r.json().then(console.error)
+      }
+    })
+  }
   
   return (
     <>
@@ -44,7 +63,7 @@ function App() {
         <Route path="login" element={<Login setUser={setUser} />} />
         <Route path="cats" element={<Cats user={user} />} />
         <Route path="user-profile" element={<UserProfile user={user} />} />
-        <Route path="new-cat" element={<CatForm user={user} checkUser={checkUser} />} />
+        <Route path="new-cat" element={<CatForm user={user} checkUser={checkUser} handleSubmit={postCat} />} />
         <Route path="edit-cat" element={<CatForm user={user} checkUser={checkUser} />} />
         <Route path="*" element={<NoPage />} />
       </Routes>

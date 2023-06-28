@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate, useLocation} from 'react-router-dom';
 
-const CatForm = ({user, checkUser}) => {
+const CatForm = ({user, checkUser, handleSubmit}) => {
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -16,14 +16,8 @@ const CatForm = ({user, checkUser}) => {
 
   useEffect(() => {
     if (location.pathname === '/edit-cat') {
-      setFormData({
-        name: 'test',
-        age: '1',
-        sex: '',
-        color: 'test',
-        disposition: 'test',
-        image: ''
-      })
+      // setFormData(cat)
+      console.log('OINK')
     }
   }, [])
   
@@ -35,23 +29,6 @@ const CatForm = ({user, checkUser}) => {
     })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    fetch('/cats', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    })
-    .then(r => {
-      if (r.ok) {
-          checkUser()
-          navigate('/cats')
-      } else {
-        r.json().then(console.error)
-      }
-    })
-  }
-
   return (
     <>
       {location.pathname === '/edit-cat' ?
@@ -60,7 +37,7 @@ const CatForm = ({user, checkUser}) => {
         <h2>New Cat</h2>
       }
       <div className='catform'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e, formData)}>
           <label>Name: </label>
           <input
             type="text"
