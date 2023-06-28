@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useNavigate, useLocation} from 'react-router-dom';
 
 const CatForm = ({user, checkUser}) => {
   const navigate = useNavigate()
+  const location = useLocation()
 
   const [formData, setFormData] = useState({
     name: '',
@@ -12,6 +13,20 @@ const CatForm = ({user, checkUser}) => {
     disposition: '',
     image: ''
   });
+
+  useEffect(() => {
+    if (location.pathname === '/edit-cat') {
+      setFormData({
+        name: 'test',
+        age: '1',
+        sex: '',
+        color: 'test',
+        disposition: 'test',
+        image: ''
+      })
+    }
+  }, [])
+  
 
   const handleInput = (e) => {
     setFormData({
@@ -39,7 +54,11 @@ const CatForm = ({user, checkUser}) => {
 
   return (
     <>
-      <h2>New Cat</h2>
+      {location.pathname === '/edit-cat' ?
+        <h2>Edit Cat</h2>
+      :
+        <h2>New Cat</h2>
+      }
       <div className='catform'>
         <form onSubmit={handleSubmit}>
           <label>Name: </label>
@@ -60,7 +79,7 @@ const CatForm = ({user, checkUser}) => {
             />
           <label>Sex: </label>
           <select name="sex" value={formData.sex} onChange={handleInput}>
-            <option value="" disabled selected>Select sex...</option>
+            <option value="" disabled defaultValue>Select sex...</option>
             <option value="female">Female</option>
             <option value="male">Male</option>
           </select>

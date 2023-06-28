@@ -45,6 +45,7 @@ function App() {
         <Route path="cats" element={<Cats user={user} />} />
         <Route path="user-profile" element={<UserProfile user={user} />} />
         <Route path="new-cat" element={<CatForm user={user} checkUser={checkUser} />} />
+        <Route path="edit-cat" element={<CatForm user={user} checkUser={checkUser} />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </>
