@@ -56,7 +56,7 @@ function App() {
 
   const patchCat = (e, formData) => {
     e.preventDefault()
-    fetch('/cats', {
+    fetch(`/cats/${formData.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)

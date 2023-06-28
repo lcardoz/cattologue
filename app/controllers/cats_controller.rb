@@ -17,7 +17,7 @@ class CatsController < ApplicationController
     end
 
     def update
-        cat = cat.find(params[:id])
+        cat = Cat.find(params[:id])
         cat.update!(cat_params)
         render json: cat, status: :accepted
     end
