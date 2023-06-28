@@ -1,6 +1,9 @@
 import React from 'react';
+import {useEffect} from 'react';
 
-const UserProfile = ({user}) => {
+const UserProfile = ({user, checkUser}) => {
+  useEffect(checkUser, [])
+
   return (
     <div id="profile-container">
       <div id="profile-child">

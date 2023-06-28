@@ -79,7 +79,7 @@ function App() {
         <Route path="signup" element={<Signup setUser={setUser} />} />
         <Route path="login" element={<Login setUser={setUser} />} />
         <Route path="cats" element={<Cats user={user} />} />
-        <Route path="user-profile" element={<UserProfile user={user} />} />
+        <Route path="user-profile" element={<UserProfile user={user} checkUser={checkUser} />} />
         <Route path="new-cat" element={<CatForm handleSubmit={postCat} />} />
         <Route path="edit-cat" element={<CatForm handleSubmit={patchCat} />} />
         <Route path="*" element={<NoPage />} />

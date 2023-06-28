@@ -1,17 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 
 const CatForm = ({handleSubmit}) => {
+  const navigate = useNavigate()
+
   const location = useLocation()
-  const catData = {
-    id: location.state.id,
-    name: location.state.name,
-    age: location.state.age,
-    sex: location.state.sex,
-    color: location.state.color,
-    disposition: location.state.disposition,
-    image: location.state.image
-  }
 
   const [formData, setFormData] = useState({
     name: '',
@@ -24,7 +17,15 @@ const CatForm = ({handleSubmit}) => {
 
   useEffect(() => {
     if (location.pathname === '/edit-cat') {
-      setFormData(catData)
+      setFormData({
+        id: location.state.id,
+        name: location.state.name,
+        age: location.state.age,
+        sex: location.state.sex,
+        color: location.state.color,
+        disposition: location.state.disposition,
+        image: location.state.image
+      })
     }
   }, [])
   
@@ -33,6 +34,17 @@ const CatForm = ({handleSubmit}) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
+    })
+  }
+
+  const handleDelete = () => {
+    fetch(`/cats/${location.state.id}`, {method: 'DELETE'})
+    .then(r => {
+      if (r.ok) {
+        navigate('/cats')
+      } else {
+        r.json().then(console.error)
+      }
     })
   }
 
@@ -93,6 +105,9 @@ const CatForm = ({handleSubmit}) => {
             />
           <input type="submit"/>
         </form>
+        {location.pathname === '/edit-cat' ?
+          <button onClick={handleDelete}>Delete Cat</button>
+        : null}
       </div>
     </>
   )
