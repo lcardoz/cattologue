@@ -6,8 +6,8 @@ const UserForm = ({user}) => {
   const navigate = useNavigate()
 
   const initialState = {
-    name: '',
-    location: '', 
+    name: user.name,
+    location: user.location, 
   }
 
   const [updatedFormData, setUpdatedFormData] = useState(initialState);
@@ -21,7 +21,6 @@ const UserForm = ({user}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log('submitted', updatedFormData)
     fetch(`/user-profile/${user.id}`, {
       method: 'PATCH',
       headers: {"Content-Type": "application/json"},
@@ -29,7 +28,8 @@ const UserForm = ({user}) => {
     })
     .then(r => {
       if (r.ok) {
-        setUpdatedFormData(initialState)
+        console.log('submitted', updatedFormData)
+        // setUpdatedFormData(initialState)
         navigate(`/user-profile/${user.id}`)
       } else {
         r.json().then(console.error)
