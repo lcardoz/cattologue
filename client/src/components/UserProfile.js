@@ -15,7 +15,7 @@ const UserProfile = ({user, checkUser}) => {
           {user.cats?.map(cat => <li key={cat.id}>{cat.name}</li>)}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
