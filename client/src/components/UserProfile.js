@@ -11,7 +11,7 @@ const UserProfile = ({user}) => {
   return (
     <>
       <div style={{textAlign: 'center', marginBottom: '20px'}}>
-        <button onClick={() => navigate(`/user-profile/${user.id}/edit-profile`)}>
+        <button onClick={() => navigate(`/profile/edit`)}>
           Edit Profile
         </button>
       </div>

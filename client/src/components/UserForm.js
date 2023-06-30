@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
-const UserForm = ({user}) => {
+const UserForm = ({user, setUser}) => {
 
   const navigate = useNavigate()
 
@@ -21,7 +21,7 @@ const UserForm = ({user}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`/user-profile/${user.id}`, {
+    fetch(`/users/${user.id}`, {
       method: 'PATCH',
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(updatedFormData)
@@ -30,7 +30,8 @@ const UserForm = ({user}) => {
       if (r.ok) {
         console.log('submitted', updatedFormData)
         // setUpdatedFormData(initialState)
-        navigate(`/user-profile/${user.id}`)
+        r.json().then(setUser)
+        navigate(`/profile`)
       } else {
         r.json().then(console.error)
       }

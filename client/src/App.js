@@ -39,8 +39,8 @@ function App() {
         <Route path="signup" element={<Signup setUser={setUser} />} />
         <Route path="login" element={<Login setUser={setUser} />} />
         <Route path="cats" element={<Cats user={user} />} />
-        <Route path="user-profile/:id" element={<UserProfile user={user} />} />
-        <Route path="user-profile/:id/edit-profile" element={<UserForm user={user} /> } />
+        <Route path="profile" element={<UserProfile user={user} />} />
+        <Route path="profile/edit" element={<UserForm user={user} setUser={setUser} /> } />
         <Route path="new-cat" element={<CatForm />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
