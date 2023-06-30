@@ -23,7 +23,7 @@ const NavBar = ({user, setUser}) => {
       <Link to="/cats">CATS</Link>
       {user ?
         <> 
-          <Link to="/user-profile">MY PROFILE</Link>
+          <Link to="/profile">MY PROFILE</Link>
           <button onClick={handleLogout}>Log out</button>
         </> 
       : 

@@ -1,7 +1,7 @@
 const CatCard = ({cat}) => {
     return (
         <div className="catcard">
-            <img src={cat.image} />
+            <img src={cat.image} alt={cat.name} />
             <h2>{cat.name}</h2>
             <p>{cat.age + ' | ' + cat.sex + ' | ' + cat.color}</p>
             <p>Disposition: {cat.disposition}</p>
