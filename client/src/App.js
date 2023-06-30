@@ -9,6 +9,7 @@ import Signup from './components/Signup';
 import UserProfile from './components/UserProfile';
 import NoPage from './components/NoPage';
 import CatForm from './components/CatForm';
+import UserForm from './components/UserForm';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
     // Martin- 
     // Leah- 
 
-  // TO DO: CRUD, look into ReactNative?
+  // TO DO: look into ReactNative?
   // Stretch Goals: Action Mailer, Active Storage, Styling Framework? (Tailwind, Bootstrap?)
   const navigate = useNavigate()
 
@@ -79,7 +80,8 @@ function App() {
         <Route path="signup" element={<Signup setUser={setUser} />} />
         <Route path="login" element={<Login setUser={setUser} />} />
         <Route path="cats" element={<Cats user={user} />} />
-        <Route path="user-profile" element={<UserProfile user={user} checkUser={checkUser} />} />
+        <Route path="profile" element={<UserProfile user={user} checkUser={checkUser} />} />
+        <Route path="profile/edit" element={<UserForm user={user} setUser={setUser} /> } />
         <Route path="new-cat" element={<CatForm handleSubmit={postCat} />} />
         <Route path="edit-cat" element={<CatForm handleSubmit={patchCat} />} />
         <Route path="*" element={<NoPage />} />

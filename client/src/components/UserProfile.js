@@ -14,9 +14,8 @@ const UserProfile = ({user, checkUser}) => {
           <h3>Cats:</h3>
           {user.cats?.map(cat => <li key={cat.id}>{cat.name}</li>)}
         </div>
-        {/* <button>Follow User</button> */}
       </div>
-    </div>
+    </>
   )
 }
 
