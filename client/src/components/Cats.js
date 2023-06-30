@@ -7,7 +7,7 @@ const Cats = ( {user} ) => {
 
   const [cats, setCats] = useState([])
   const [showOnlyMyCats, setShowOnlyMyCats] = useState(false)
-  const [search, setSearch] =useState('')
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     fetch('/cats')
@@ -45,7 +45,7 @@ const Cats = ( {user} ) => {
           .filter(cat => (!showOnlyMyCats || cat.user.id === user.id) &&
             cat.name.toLowerCase().includes(search.toLowerCase())
           )
-          .map(cat => <CatCard key={cat.id} cat={cat} />)
+          .map(cat => <CatCard key={cat.id} cat={cat} user={user} />)
         }
       </div>
     </div>

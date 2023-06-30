@@ -1,19 +1,34 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useNavigate, useLocation} from 'react-router-dom';
 
-const CatForm = () => {
+const CatForm = ({handleSubmit}) => {
   const navigate = useNavigate()
 
-  const initialState = {
+  const location = useLocation()
+
+  const [formData, setFormData] = useState({
     name: '',
     age: '',
     sex: '',
     color: '',
     disposition: '',
     image: ''
-  }
+  });
 
-  const [formData, setFormData] = useState(initialState);
+  useEffect(() => {
+    if (location.pathname === '/edit-cat') {
+      setFormData({
+        id: location.state.id,
+        name: location.state.name,
+        age: location.state.age,
+        sex: location.state.sex,
+        color: location.state.color,
+        disposition: location.state.disposition,
+        image: location.state.image
+      })
+    }
+  }, [])
+  
 
   const handleInput = (e) => {
     setFormData({
@@ -22,17 +37,11 @@ const CatForm = () => {
     })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    fetch('/cats', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    })
+  const handleDelete = () => {
+    fetch(`/cats/${location.state.id}`, {method: 'DELETE'})
     .then(r => {
       if (r.ok) {
-          setFormData(initialState)
-          navigate('/cats')
+        navigate('/cats')
       } else {
         r.json().then(console.error)
       }
@@ -41,9 +50,13 @@ const CatForm = () => {
 
   return (
     <>
-      <h2>New Cat</h2>
+      {location.pathname === '/edit-cat' ?
+        <h2>Edit Cat</h2>
+      :
+        <h2>New Cat</h2>
+      }
       <div className='catform'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e, formData)}>
           <label>Name: </label>
           <input
             type="text"
@@ -62,7 +75,7 @@ const CatForm = () => {
             />
           <label>Sex: </label>
           <select name="sex" value={formData.sex} onChange={handleInput}>
-            <option value="" disabled selected>Select sex...</option>
+            <option value="" disabled defaultValue>Select sex...</option>
             <option value="female">Female</option>
             <option value="male">Male</option>
           </select>
@@ -92,6 +105,9 @@ const CatForm = () => {
             />
           <input type="submit"/>
         </form>
+        {location.pathname === '/edit-cat' ?
+          <button onClick={handleDelete}>Delete Cat</button>
+        : null}
       </div>
     </>
   )
