@@ -21,6 +21,11 @@ class UsersController < ApplicationController
         render json: user, status: :accepted
     end
 
+    def destroy
+        User.find(session[:user_id]).destroy
+        head :no_content
+    end
+
     private
     
     def user_params

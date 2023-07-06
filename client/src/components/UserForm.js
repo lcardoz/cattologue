@@ -19,6 +19,19 @@ const UserForm = ({user, setUser}) => {
     })
   }
 
+  const handleDeleteAccount = () => {
+    console.log('clicked delete')
+    fetch(`/users/${user.id}`, {method: 'DELETE'})
+    .then(r => {
+      if (r.ok) {
+        setUser(null)
+        navigate('/')
+      } else {
+        r.json().then(console.error)
+      }
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     fetch(`/users/${user.id}`, {
@@ -59,6 +72,11 @@ const UserForm = ({user, setUser}) => {
             />
           <input type="Submit"/>
         </form>
+        <div style={{paddingTop: "50px"}}>
+          <button onClick={handleDeleteAccount}>
+            Delete Account
+          </button>
+        </div>
       </div>
     </>
 
